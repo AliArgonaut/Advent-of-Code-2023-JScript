@@ -1,0 +1,92 @@
+var fs = require('fs')                                     // init file module from node
+
+
+//grabs file, trims whitespace, splits along new line, del returns
+const array = fs.readFileSync('text.txt', 'utf-8').trim().split("/n").map(lines => lines.replace('/r', '')) 
+
+function NumFind(){
+    output = []                                       //empty list 
+    for (let i = 0; i < array.length; i++){           //for loop init
+        stringFoo = array[i].split();                   //splits each list item into a list of its own
+        numberOne = stringFoo.find((element) => !isNaN(element))         //stores teh first number
+        numberTwo = stringFoo.findLast((element) => !isNaN(element))      //stores the last number
+        output.push(numberOne + numberTwo)          //atp these vars are str...so add them to a list
+    }
+    numPut = output.map(str => parseInt(str, 10)).reduce((p,c) => {return p+c}, 0)  //turn each string into num, add them all up
+}
+
+________________________________________________________________________________________________________________________________________________________________________
+come back to part 2 with this in mind 
+
+
+
+// Assuming input is the string "eight76fivefo79"
+const input = "eight76fivefo79";
+
+// Split the string at newline characters and store lines in the target array
+const target = input.split('\n');
+// Initialize variables for accumulating the sum and tracking indices and numbers
+let sum = 0;
+let findex;
+let lindex;
+let fnumber;
+let lnumber;
+
+// Iterate through each line in the target array
+target.forEach((line) => {
+  // Initialize indices to default values
+  findex = line.length;
+  lindex = -1;
+
+  // Iterate through each number in the 'numbers' object
+  for (const number in numbers) {
+    // Check if the current number exists in the line and its index is less than findex
+    if (line.indexOf(number) !== -1 && line.indexOf(number) < findex) {
+      fnumber = numbers[number];
+      findex = line.indexOf(number);
+    }
+    
+    // Check if the current number exists in the line and its last index is greater than lindex
+    if (line.lastIndexOf(number) !== -1 && line.lastIndexOf(number) > lindex) {
+      lnumber = numbers[number];
+      lindex = line.lastIndexOf(number);
+    }
+  }
+
+  // Convert fnumber and lnumber to numbers and accumulate the sum
+  sum += Number(fnumber + lnumber);
+});
+
+// Print the final sum to the console
+console.log(sum);
+
+________________________________________________________________________________________________________________________________________________________________________
+
+here is what i have so far for part two, the regex is the only interesting part. 
+
+
+function PartTwoSolution(){
+    let convertedList = newArr.map(item => {return item.replace(/one/g, '1')
+    .replace(/two/g, '2')
+    .replace(/three/g, '3')
+    .replace(/four/g, '4')
+    .replace(/five/g, '5')
+    .replace(/six/g, '6')
+    .replace(/seven/g, '7')
+    .replace(/eight/g, '8')
+    .replace(/nine/g, '9')})
+
+    for (let x = 0; x < convertedList.length; x++){
+        let splitStr = convertedList[x].split('\n'); 
+
+        if (typeof splitStr[x] === 'undefined'){
+            console.log('splitstr is undefined')
+        }
+        else{
+            console.log('something else, a string or sum')
+        }
+   }
+
+}
+
+PartTwoSolution()
