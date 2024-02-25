@@ -8,7 +8,7 @@ const contents = fs
   .split("\n")
   .map((item) => item.replace("\r", ""));
 
-//constructing maximums
+//constructing maximums (these ultimately end up not being used, but implementing them would be as easy as replacing one word with another)
 const maxRed = 12;
 const maxBlue = 14;
 const maxGreen = 13;
